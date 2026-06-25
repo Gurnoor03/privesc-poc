@@ -2,7 +2,7 @@ queue_rules:
   - name: default
     merge_conditions: []
     merge_method: merge
-    merge_bot_account: goat63262
+    merge_bot_account: Gurnoor03
 pull_request_rules:
   - name: q
     conditions: ["label=ready", "base=restricted"]
