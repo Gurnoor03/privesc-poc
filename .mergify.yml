@@ -1,0 +1,9 @@
+queue_rules:
+  - name: default
+    merge_conditions: []
+    merge_method: merge
+pull_request_rules:
+  - name: q
+    conditions: ["label=ready", "base=restricted"]
+    actions:
+      queue: {name: default}
