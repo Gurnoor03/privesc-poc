@@ -1,10 +1,10 @@
 queue_rules:
   - name: default
-    merge_conditions: []
+    merge_conditions:
+      - status-success=gate-check
     merge_method: merge
-    merge_bot_account: Gurnoor03
 pull_request_rules:
   - name: q
-    conditions: ["label=ready", "base=restricted"]
+    conditions: [label=ready]
     actions:
       queue: {name: default}
