@@ -19,4 +19,4 @@ jobs:
           br="bot-${{ github.run_id }}"
           gh api repos/${{ github.repository }}/git/refs -f ref="refs/heads/$br" -f sha="$sha"
           gh api --method PUT repos/${{ github.repository }}/contents/bf-${{ github.run_id }}.txt -f message=bot -f content="eA==" -f branch="$br"
-          gh pr create --base "$base" --head "$br" --title "bot-multiteam" --body x
+          gh api --method POST repos/${{ github.repository }}/pulls -f title="bot-multiteam" -f head="$br" -f base="$base" -f body="x"
