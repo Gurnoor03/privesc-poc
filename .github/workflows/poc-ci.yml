@@ -2,10 +2,13 @@ name: poc-ci
 on:
   pull_request:
 permissions:
+  pull-requests: write
   contents: read
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: marker
-        run: echo "POC-RUN actor=${{ github.actor }} event=${{ github.event_name }} pr=${{ github.event.number }} head=${{ github.event.pull_request.head.sha }}"
+      - run: |
+          echo "POC actor=${{ github.actor }} event=${{ github.event_name }} ref=${{ github.ref }}"
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H "Authorization: token ${{ github.token }}" -H "Accept: application/vnd.github+json" https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels -d '{"labels":["poc-trusted"]}')
+          echo "TOKEN_WRITE_HTTP=$code  (403=read-only/untrusted, 200/201=WRITE/trusted)"
