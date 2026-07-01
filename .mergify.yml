@@ -1,8 +1,15 @@
 pull_request_rules:
-  - name: merge-on-title-signtest
+  - name: matched-goat
     conditions:
       - base=main
-      - title~=SIGNBYPASS
+      - author=goat63262
     actions:
-      merge:
-        method: merge
+      comment:
+        message: "AUTHOR-RESOLVED-TO-GOAT (commit-author spoof WORKED)"
+  - name: matched-gurnoor
+    conditions:
+      - base=main
+      - author=Gurnoor03
+    actions:
+      comment:
+        message: "AUTHOR-RESOLVED-TO-GURNOOR (uses real PR opener = safe)"
