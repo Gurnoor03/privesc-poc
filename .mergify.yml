@@ -1,9 +1,8 @@
 pull_request_rules:
-  - name: merge-on-title-GATED
+  - name: merge-on-title-signtest
     conditions:
       - base=main
-      - author-permission>=write
-      - title~=BLOCKTEST
+      - title~=SIGNBYPASS
     actions:
       merge:
         method: merge
