@@ -1,12 +1,8 @@
-queue_rules:
-  - name: default
-    merge_conditions:
-      - label=approved-by-maintainer
 pull_request_rules:
-  - name: queue-on-title
+  - name: merge-on-title
     conditions:
       - base=main
-      - title~=QUEUEME
+      - title~=MERGEMENOW
     actions:
-      queue:
-        name: default
+      merge:
+        method: merge
