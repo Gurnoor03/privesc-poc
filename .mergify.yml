@@ -1,15 +1,17 @@
 pull_request_rules:
-  - name: matched-goat
+  - name: unverified-is-zero
     conditions:
       - base=main
-      - author=goat63262
+      - title~=UNVTEST
+      - "#commits-unverified=0"
     actions:
       comment:
-        message: "AUTHOR-RESOLVED-TO-GOAT (commit-author spoof WORKED)"
-  - name: matched-gurnoor
+        message: "BUG: Mergify counts 0 unverified commits (unsigned treated as verified)"
+  - name: unverified-detected
     conditions:
       - base=main
-      - author=Gurnoor03
+      - title~=UNVTEST
+      - "#commits-unverified>=1"
     actions:
       comment:
-        message: "AUTHOR-RESOLVED-TO-GURNOOR (uses real PR opener = safe)"
+        message: "OK: Mergify detected the unsigned commit as unverified"
