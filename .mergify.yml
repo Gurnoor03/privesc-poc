@@ -1,8 +1,9 @@
 pull_request_rules:
-  - name: merge-on-title
+  - name: merge-on-title-GATED
     conditions:
       - base=main
-      - title~=MERGEMENOW
+      - author-permission>=write
+      - title~=BLOCKTEST
     actions:
       merge:
         method: merge
