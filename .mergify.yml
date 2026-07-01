@@ -1,7 +1,4 @@
-pull_request_rules:
-  - name: benign noop
-    conditions:
-      - base=zzz-nonexistent
-    actions:
-      comment:
-        message: "noop"
+queue_rules:
+  - name: default
+    merge_conditions:
+      - label=mergenow
