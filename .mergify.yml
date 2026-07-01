@@ -1,4 +1,12 @@
 queue_rules:
   - name: default
-    merge_conditions:
-      - label=mergenow
+    merge_conditions: []
+pull_request_rules:
+  - name: auto-merge when green
+    conditions:
+      - base=main
+      - "#check-failure=0"
+      - "#check-pending=0"
+    actions:
+      queue:
+        name: default
