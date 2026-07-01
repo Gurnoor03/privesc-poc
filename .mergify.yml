@@ -1,9 +1,14 @@
+queue_rules:
+  - name: default
+    batch_size: 3
+    allow_inplace_checks: true
+    merge_conditions:
+      - label=go
 pull_request_rules:
-  - name: check-forged
+  - name: q
     conditions:
       - base=main
-      - title~=CHECKFORGE
-      - check-success=poc-required-ci
+      - label=queueme
     actions:
-      comment:
-        message: "FORK-FORGED-CHECK-ACCEPTED: Mergify counted a fork-self-posted status"
+      queue:
+        name: default
